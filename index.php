@@ -1,3 +1,11 @@
+  <!-- Sweet alerts CDN -->
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <!-- jQuery -->
+<script src="plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="dist/js/adminlte.min.js"></script>
 <?php
 //include object files
 include_once 'objects/User.php';
@@ -13,12 +21,27 @@ include_once 'config/Database.php';
       $user->password = $_POST['password'];
       if ($user->login()) {
           if ('admin' == $_SESSION['role']) {
-              header('refresh:1;dashboard.php');
+              //sweetalert
+              echo '<script type="text/javascript">
+          jQuery(function validation(){
+          swal("Welcome!", "'.$_SESSION['username'].'", "success");  
+          });
+          </script>';
+              header('refresh:3;dashboard.php');
           } else {
-              header('refresh:1;user.php');
+              echo '<script type="text/javascript">
+          jQuery(function validation(){
+          swal("Welcome!", "'.$_SESSION['username'].'", "success");  
+          });
+          </script>';
+              header('refresh:3;user.php');
           }
       } else {
-          echo 'Not logged in';
+          echo '<script type="text/javascript">
+          jQuery(function validation(){
+          swal("Oops!", "Wrong username or password!", "error");  
+          });
+          </script>';
       }
   }
 
@@ -31,6 +54,8 @@ include_once 'config/Database.php';
   <title>Inventory-POS</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
@@ -86,13 +111,5 @@ include_once 'config/Database.php';
   </div>
 </div>
 <!-- /.login-box -->
-
-<!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-<script src="dist/js/adminlte.min.js"></script>
-
 </body>
 </html>

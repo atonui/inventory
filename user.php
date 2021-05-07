@@ -1,15 +1,9 @@
 <?php
-session_start();
+include_once 'includes/header.php';
 
 if (0 != strcmp('user', $_SESSION['role'])) {
     header('location:index.php');
 }
-
-include_once 'header.php';
-
-include_once 'objects/User.php';
-
-include_once 'config/Database.php';
 
 ?>
 
@@ -33,5 +27,5 @@ include_once 'config/Database.php';
 
   <!-- Main Footer -->
  <?php
- include 'footer.php';
+ include 'includes/footer.php';
  ?>

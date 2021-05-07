@@ -9,6 +9,7 @@ class Database
     private $conn;
 
     public function connect()
+    // cannot use a constructor for this because of https://stackoverflow.com/questions/19622038/fatal-error-call-to-undefined-method-databaseprepare
     {
         $this->conn = null;
 
