@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if (0 != strcmp('admin', $_SESSION['role'])) {
+if (0 != strcmp('user', $_SESSION['role'])) {
     header('location:index.php');
 }
 
