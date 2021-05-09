@@ -1,10 +1,10 @@
 <?php
-include_once 'includes/header.php';
+include_once './includes/header.php';
 
-if (0 != strcmp('user', $_SESSION['role'])) {
+session_start();
+if ('user' != $_SESSION['role']) {
     header('location:index.php');
 }
-
 ?>
 
   <!-- Content Wrapper. Contains page content -->
@@ -27,5 +27,5 @@ if (0 != strcmp('user', $_SESSION['role'])) {
 
   <!-- Main Footer -->
  <?php
- include 'includes/footer.php';
+ include_once './includes/footer.php';
  ?>
