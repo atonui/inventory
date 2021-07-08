@@ -99,7 +99,7 @@ if (isset($_POST['login']) && !empty($_POST['email']) && !empty($_POST['password
         </div>
         <div class="row">
           <div class="col-xs-8">
-            <a href="#">I forgot my password</a>
+            <a href="#" onclick="swal('To Get Password', 'Please Contact Admin', 'warning');">I forgot my password</a>
           </div>
           <!-- /.col -->
           <div class="col-xs-4">

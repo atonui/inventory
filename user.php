@@ -1,7 +1,9 @@
 <?php
+ob_start();
+
 include_once './includes/header.php';
 
-session_start();
+//session_start();
 if ('user' != $_SESSION['role']) {
     header('location:index.php');
 }
