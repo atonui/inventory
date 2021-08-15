@@ -21,17 +21,15 @@ class User
 
     public function createUser()
     {
-        if (!$this->checkUser()) {
-            $query = 'INSERT INTO ' . $this->table_name . ' (`username`, `email`, `password`, `role`) VALUES (?,?,?,?)';
-            $result = $this->conn->prepare($query);
-            $this->username = htmlspecialchars(strip_tags($this->username));
-            $this->email = htmlspecialchars(strip_tags($this->email));
-            $this->password = htmlspecialchars(strip_tags($this->password));
-            $this->role = htmlspecialchars(strip_tags($this->role));
+        $query = 'INSERT INTO ' . $this->table_name . ' (`username`, `email`, `password`, `role`) VALUES (?,?,?,?)';
+        $result = $this->conn->prepare($query);
+        $this->username = htmlspecialchars(strip_tags($this->username));
+        $this->email = htmlspecialchars(strip_tags($this->email));
+        $this->password = htmlspecialchars(strip_tags($this->password));
+        $this->role = htmlspecialchars(strip_tags($this->role));
 
-            if ($result->execute([$this->username, $this->email, $this->password, $this->role])) {
-                return true;
-            }
+        if ($result->execute([$this->username, $this->email, $this->password, $this->role])) {
+            return true;
         } else {
             return false;
         }
@@ -115,6 +113,17 @@ class User
         }
 
         return false;
+    }
+
+    public function delete()
+    {
+        $query = 'DELETE FROM ' . $this->table_name . ' WHERE user_id=?';
+        $result = $this->conn->prepare($query);
+        if ($result->execute(array($this->user_id))) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     //function to change passwords
